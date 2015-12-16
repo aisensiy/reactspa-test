@@ -1,0 +1,27 @@
+{
+  "name": "reactspa-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "restify": "^4.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "npm i -g nightwatch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aisensiy/reactspa-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aisensiy/reactspa-test/issues"
+  },
+  "homepage": "https://github.com/aisensiy/reactspa-test#readme"
+}

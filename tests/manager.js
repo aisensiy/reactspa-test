@@ -21,7 +21,7 @@ module.exports = {
         .execute('document.querySelector(".panel form .form-group:nth-child(2) select").options[1].selected=true')
         .click('.panel button[type=submit]')
         .pause(1000)
-        .assert.containsText('#main > div > div > div > div.row > div.col-md-9 > section > table > thead > tr > th:nth-child(3)', 'api/javajersey')
+        .assert.containsText('#main > div > div > div > div.row > div.col-md-9 > section > table > thead > tr > th:nth-child(4)', 'api/javajersey')
         .assert.containsText('.vertical-timeline .periods li:first-child', 'create stack javajersey for api')
   },
   'Click stack show stack list': function (browser) {
@@ -36,6 +36,8 @@ module.exports = {
         .click('.stack-container:first-child .stack-item:nth-child(2) .action')
         .pause(1000)
         .assert.containsText('.vertical-timeline .periods li:first-child', 'deprecate stack javajersey for api')
+        .click('#bs-example-navbar-collapse-1 > ul > li:nth-child(3) > a')
+        .pause(1000)
         .end();
   }
 };

@@ -21,6 +21,8 @@ module.exports = {
         .click('#capabilityChooser > div > div > div.modal-body > ul > li:nth-child(1) > button')
         .pause(1000)
         .assert.elementPresent('#main > div > div > div > div.row.evaluation-list-view > div')
+        .click('#bs-example-navbar-collapse-1 > ul > li:nth-child(3) > a')
+        .pause(1000)
         .end();
   }
 };
