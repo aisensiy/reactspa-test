@@ -681,7 +681,7 @@ server.post('/projects/:project_id/capabilities', function (req, res) {
     },
     "deprecated_at": null,
     "created_at": 1450255363000,
-    "id": 3,
+    "id": +new Date % 100,
     "uri": "/projects/100/capabilities/3"
   });
   res.send(201);
@@ -692,53 +692,58 @@ server.get('/projects/:project_id/users', function (req, res) {
 });
 
 server.post('/projects/:project_id/users/:user_id/evaluations', function (req, res) {
-  evaluations.push( {
-    "stack": {
-      "name": "javajersey",
-      "description": "jersey 2.0 and mysql with innodb and mybatis",
-      "id": 1,
-      "services": [
-        {
-          "image_url": "http://img.stackshare.io/service/995/K85ZWV2F.png",
-          "name": "Java",
-          "uri": "/services/10"
-        },
-        {
-          "image_url": "https://jersey.java.net/images/jersey_logo.png",
-          "name": "Jersey",
-          "uri": "/services/11"
-        },
-        {
-          "image_url": "http://img.stackshare.io/service/1025/logo-mysql-170x170.png",
-          "name": "MySQL",
-          "uri": "/services/12"
-        }
-      ],
-      "uri": "/stacks/1"
-    },
-    "solution": {
-      "name": "api",
-      "description": "description for data api",
-      "created_at": "2015-12-16 15:05:47.0",
-      "id": 1,
-      "uri": "/solutions/1"
-    },
-    "project_id": 100,
-    "capability_id": 1,
-    "instruction": {
-      "cookie": "EXAM_SESSION_ID=91d90003-fd07-4a6f-a9e0-8ea81efa3286",
-      "instructionUri": "/projects/100/users/100/evaluations/2/instructions"
-    },
-    "created_at": 1450255488000,
-    "id": 2,
-    "projectName": "ketsu",
-    "uri": "/users/100/evaluations/2",
-    "user": {
-      "name": "shanchuan",
-      "id": 100,
-      "uri": "/users/100"
-    }
+  var filted_users = project_users.filter(function (user) {
+    return user.id == req.params.user_id;
+  }).forEach(function (user) {
+    user.evaluations.push({
+      "stack": {
+        "name": "javajersey",
+        "description": "jersey 2.0 and mysql with innodb and mybatis",
+        "id": 1,
+        "services": [
+          {
+            "image_url": "http://img.stackshare.io/service/995/K85ZWV2F.png",
+            "name": "Java",
+            "uri": "/services/10"
+          },
+          {
+            "image_url": "https://jersey.java.net/images/jersey_logo.png",
+            "name": "Jersey",
+            "uri": "/services/11"
+          },
+          {
+            "image_url": "http://img.stackshare.io/service/1025/logo-mysql-170x170.png",
+            "name": "MySQL",
+            "uri": "/services/12"
+          }
+        ],
+        "uri": "/stacks/1"
+      },
+      "solution": {
+        "name": "api",
+        "description": "description for data api",
+        "created_at": "2015-12-16 15:05:47.0",
+        "id": 1,
+        "uri": "/solutions/1"
+      },
+      "project_id": 100,
+      "capability_id": req.params.capability_id,
+      "instruction": {
+        "cookie": "EXAM_SESSION_ID=91d90003-fd07-4a6f-a9e0-8ea81efa3286",
+        "instructionUri": "/projects/100/users/100/evaluations/2/instructions"
+      },
+      "created_at": 1450255488000,
+      "id": 2,
+      "projectName": "ketsu",
+      "uri": "/users/100/evaluations/2",
+      "user": {
+        "name": "shanchuan",
+        "id": 100,
+        "uri": "/users/100"
+      }
+    });
   });
+
   res.send(201);
 });
 
